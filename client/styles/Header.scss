@@ -1,0 +1,50 @@
+.header-text {
+	text-align: center;
+	padding: 0.5rem;
+	color: #fff;
+	background: #3cbeb6;
+	margin-bottom: 1rem;
+	font-size: 2rem;
+	background: -webkit-linear-gradient(0deg, #01b4ce, #3cbeb6, #01b4ce);
+
+	.sub-header {
+		font-size: 1.5rem;
+		font-weight: 300;
+	}
+}
+
+.city-searchbar {
+	margin: 1rem;
+	text-align: center;
+	position: relative;
+	input {
+		height: 3rem;
+		width: 75%;
+		font-size: 1rem;
+		color: rgba(0, 0, 0, 0.5);
+		padding-left: 0.5rem;
+		border: 1px solid #3cbeb6;
+	}
+
+	button {
+		color: #fff;
+		height: 3rem;
+		width: 3rem;
+		border: none;
+		position: absolute;
+		background-color: #3cbeb6;
+	}
+}
+
+a:visited,
+a:active,
+a:link,
+a:hover {
+	color: #fff;
+	text-decoration: none !important;
+	outline: none;
+}
+
+.error-message {
+	color: #ff6038;
+}

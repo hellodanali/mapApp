@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400');
+
+body {
+	font-family: "Lato", Helvetica;
+	color: rgba(0, 0, 0, 0.8);
+	background-color: #efefef;
+}
+
+input:focus,
+button:focus {
+	outline: none;
+}
+
+button {
+	cursor: pointer;
+}
+
+.sub-text {
+	font-size: 1.2rem;
+	color: rgba(0, 0, 0, 0.6);
+	font-weight: 300;
+	text-align: center;
+}
+
+@import "Header.scss";
+@import "App.scss";
+@import "PlaceDetails.scss";

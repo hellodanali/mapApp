@@ -1,0 +1,41 @@
+.place-detail {
+	cursor: pointer;
+	background: #fff;
+	min-width: 30rem;
+	max-width: 30rem;
+	margin: 0.5rem;
+	min-height: 5rem;
+	padding: 1rem;
+	color: rgba(0, 0, 0, 0.5);
+}
+
+.place-name {
+	font-size: 1.2rem;
+	line-height: 1.5rem;
+	color: rgba(0, 0, 0, 0.8);
+	font-weight: 800;
+}
+
+.fa-star {
+	color: #ef9e1d;
+	margin-right: 5px;
+}
+
+.card-grid {
+	display: flex;
+	justify-content: space-between;
+}
+
+.place-photo {
+	width: 100px;
+	height: 100px;
+	margin-right: 1rem;
+	object-fit: cover;
+}
+
+.place-holder {
+	width: 100px;
+	height: 100px;
+	margin-right: 1rem;
+	background-color: rgba(0, 0, 0, 0.1);
+}
