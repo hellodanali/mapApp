@@ -25,6 +25,7 @@ class App extends Component {
       this.renderMap(lat, lng);
     }
   }
+
   clearSearchResults() {
     this.setState({ searchResults: [] });
   }
@@ -68,7 +69,7 @@ class App extends Component {
             map: map
           });
 
-          this.addInfoWindow(place.name, map, marker);
+          this.addInfoWindow(place, map, marker, 'mouseover');
 
           if (place.geometry.viewport) {
             bounds.union(place.geometry.viewport);
@@ -82,10 +83,56 @@ class App extends Component {
     });
   }
 
-  addInfoWindow(content, map, marker) {
-    let infoWindow = new google.maps.InfoWindow({ content });
+  addInfoWindow(place, map, marker, event) {
+    let photoUrl = place.photos
+      ? place.photos[0].getUrl({ maxHeight: 150, maxWidth: 150 })
+      : null;
+    let photoTag = photoUrl
+      ? `<img class="place-photo" src=${photoUrl} />`
+      : `<img class="place-holder" />`;
 
-    marker.addListener('mouseover', () => {
+    let ratingTag = place.rating
+      ? `<div class="rating"><span><i class="fa fa-star"></i></span>${place.rating}</div>`
+      : '';
+
+    let hourTag =
+      place.opening_hours && place.opening_hours.open_now
+        ? `<span class="open-now">Open Now</span>`
+        : `<span>Closed</span>`;
+    let contentString = `
+        <div class="card-grid">
+          <div>${photoTag}</div>
+
+          <div>
+            <div class="card-grid">
+              <div class="place-name">${place.name}</div>
+            </div>
+
+            <div class="card-grid">
+              <div>${ratingTag}</div>
+
+              <div>${hourTag}</div>
+            </div>
+
+            <div class="card-grid">
+              <div>${place.formatted_address}
+              </div>
+            </div>
+          </div>
+        </div>
+
+    `;
+    let infoWindow = new google.maps.InfoWindow({ content: contentString });
+
+    if (event) {
+      marker.addListener(event, () => {
+        infoWindow.open(map, marker);
+      });
+    } else {
+      infoWindow.open(map, marker);
+    }
+
+    marker.addListener('click', () => {
       infoWindow.open(map, marker);
     });
 
@@ -115,7 +162,7 @@ class App extends Component {
           position: { lat, lng },
           map: map
         });
-        this.addInfoWindow(place.name, map, marker);
+        this.addInfoWindow(place, map, marker);
         map.setCenter({ lat, lng });
       }
     });

@@ -5,13 +5,13 @@
 	max-width: 30rem;
 	margin: 0.5rem;
 	min-height: 5rem;
-	padding: 1rem;
+	padding: 0.5rem;
 	color: rgba(0, 0, 0, 0.5);
 }
 
 .place-name {
 	font-size: 1.2rem;
-	line-height: 1.5rem;
+	line-height: 2rem;
 	color: rgba(0, 0, 0, 0.8);
 	font-weight: 800;
 }
@@ -23,7 +23,7 @@
 
 .card-grid {
 	display: flex;
-	justify-content: space-between;
+	justify-content: flex-start;
 }
 
 .place-photo {
@@ -38,4 +38,13 @@
 	height: 100px;
 	margin-right: 1rem;
 	background-color: rgba(0, 0, 0, 0.1);
+}
+
+.rating {
+	margin-right: 1rem;
+}
+
+.open-now {
+	color: #3cb76a;
+	font-weight: 300;
 }

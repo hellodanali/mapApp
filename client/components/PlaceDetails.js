@@ -22,16 +22,18 @@ class PlaceDetails extends Component {
               <div className="place-name">
                 {place.name}
               </div>
-              <div>
-                {place.opening_hours && place.opening_hours.open_now
-                  ? 'Open'
-                  : 'Closed'}
-              </div>
             </div>
             <div className="card-grid">
+              {place.rating
+                ? <div className="rating">
+                    <i className="fa fa-star" />
+                    {place.rating}
+                  </div>
+                : null}
               <div>
-                {place.rating ? <i className="fa fa-star" /> : null}
-                {place.rating}
+                {place.opening_hours && place.opening_hours.open_now
+                  ? <span className="open-now">Open Now</span>
+                  : <span>Closed</span>}
               </div>
             </div>
 
