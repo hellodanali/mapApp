@@ -4,14 +4,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route } from 'react-router-dom';
 
-import App from './components/App';
-import Header from './components/Header';
+import CitySearch from './components/CitySearch';
 
 const Root = () => {
   return (
     <BrowserRouter>
       <div>
-        <Route path="/" component={Header} />
+        <Route path="/" component={CitySearch} />
       </div>
     </BrowserRouter>
   );

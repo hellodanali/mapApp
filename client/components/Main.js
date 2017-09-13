@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import PlaceDetails from './PlaceDetails';
 
-class App extends Component {
+class Main extends Component {
   constructor(props) {
     super(props);
 
@@ -15,12 +15,12 @@ class App extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    // listening to see if new search for city is set
     if (
       prevProps.initialPosition.lat !== this.props.initialPosition.lat ||
       prevProps.initialPosition.lng !== this.props.initialPosition.lng
     ) {
       const { lat, lng } = this.props.initialPosition;
-      console.log('new position:', lat, lng);
       this.clearSearchResults();
       this.renderMap(lat, lng);
     }
@@ -30,15 +30,14 @@ class App extends Component {
     this.setState({ searchResults: [] });
   }
 
+  // send query and renders map for query results (up to 20)
   sendQuery(e, term) {
     e.preventDefault();
     let searchTerm = term;
     if (!searchTerm.length) {
       return;
     }
-    // console.log('* searching for: ', searchTerm);
     const { lat, lng } = this.props.initialPosition;
-    console.log(lat, lng);
     let location = new google.maps.LatLng(lat, lng);
     let map = new google.maps.Map(this.refs.map, {
       center: location,
@@ -83,6 +82,7 @@ class App extends Component {
     });
   }
 
+  //add little info window above map marker
   addInfoWindow(place, map, marker, event) {
     let photoUrl = place.photos
       ? place.photos[0].getUrl({ maxHeight: 150, maxWidth: 150 })
@@ -141,6 +141,7 @@ class App extends Component {
     });
   }
 
+  //get individual query result and render map to show result
   getPlaceDetails(placeId) {
     const { lat, lng } = this.props.initialPosition;
 
@@ -168,11 +169,7 @@ class App extends Component {
     });
   }
 
-  setSearchTerm(e) {
-    e.preventDefault();
-    this.setState({ searchTerm: e.target.value });
-  }
-
+  //render map with marker
   renderMap(lat, lng) {
     let location = new google.maps.LatLng(lat, lng);
     let map = new google.maps.Map(this.refs.map, {
@@ -185,16 +182,6 @@ class App extends Component {
   render() {
     return (
       <div id="resultmap">
-        {/*
-          <form onSubmit={e => this.sendQuery(e, 'yoga')}>
-            <input
-              ref="searchBox"
-              onChange={e => this.setSearchTerm(e)}
-              value={this.state.searchTerm}
-              onFocus={() => this.setState({ searchTerm: '' })}
-            />
-            <button>search</button>
-          </form>*/}
         <div className="practice-search">
           <div className="sub-text">Choose Your Practice</div>
           <div className="sorting-btn">
@@ -244,4 +231,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Main;
