@@ -47,7 +47,7 @@ class CitySearch extends Component {
     return (
       <div name="top">
         <Banner />
-        <div className="sub-text">Find Your City</div>
+        <div className="sub-text">First, Find Your City</div>
         <div className="city-searchbar">
           <form onSubmit={e => this.getGeocode(e)}>
             <input

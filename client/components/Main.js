@@ -68,7 +68,7 @@ class Main extends Component {
             map: map
           });
 
-          this.addInfoWindow(place, map, marker, 'mouseover');
+          this.addInfoWindow(place, map, marker, 'click');
 
           if (place.geometry.viewport) {
             bounds.union(place.geometry.viewport);
@@ -128,16 +128,16 @@ class Main extends Component {
       marker.addListener(event, () => {
         infoWindow.open(map, marker);
       });
+
+      marker.addListener('mouseout', () => {
+        infoWindow.close();
+      });
     } else {
       infoWindow.open(map, marker);
     }
 
     marker.addListener('click', () => {
       infoWindow.open(map, marker);
-    });
-
-    marker.addListener('mouseout', () => {
-      infoWindow.close();
     });
   }
 
@@ -183,7 +183,7 @@ class Main extends Component {
     return (
       <div id="resultmap">
         <div className="practice-search">
-          <div className="sub-text">Choose Your Practice</div>
+          <div className="sub-text">Next, Choose Your Practice</div>
           <div className="sorting-btn">
             <button
               className="yoga-btn"

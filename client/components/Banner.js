@@ -7,7 +7,7 @@ class Banner extends Component {
       <div className="header-text">
         <Link to="/">
           <p>Find Your Inner Zen</p>
-          <p className="sub-header">In 2 Simple Steps</p>
+          <p className="sub-header">In Two Simple Steps</p>
         </Link>
       </div>
     );
